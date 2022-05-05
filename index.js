@@ -1,7 +1,11 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const teamMembers = []
-const IDArray = []
+const Employee = require('./lib/Employee.js')
+const Engineer = require('./lib/Engineer.js')
+const Manager = require('./lib/Manager.js')
+
+// const IDArray = []
 
 
 
@@ -36,7 +40,7 @@ const IDArray = []
         .then(answers => {
             const manager = new Manager(answers.teamManagerName, answers.managerID, answers.managerEmail, answers.managerOfficeNumber)
             teamMembers.push(manager)
-            IDArray.push(answers.managerID)
+            // IDArray.push(answers.managerID)
 
         createTeam()
         })
@@ -57,7 +61,7 @@ const IDArray = []
                 case "Add an intern":
                     addIntern()
                     break
-                default: buildTeam()
+                default: generateHTML()
             }
         })
 
@@ -93,9 +97,10 @@ const IDArray = []
         inquirer.prompt(questions)
         
         .then(answers => {
-            const manager = new Manager(answers.teamManagerName, answers.managerID, answers.managerEmail, answers.managerOfficeNumber)
-            teamMembers.push(manager)
-            IDArray.push(answers.managerID)
+            const engineer = new Engineer(answers.engineerName, answers.engineerID, answers.engineerEmail, answers.engineerGitHub)
+            
+            teamMembers.push(engineer)
+            // IDArray.push(answers.engineerID)
 
         createTeam()
         })
@@ -106,23 +111,23 @@ const IDArray = []
         const questions = [
             {
                 type: 'input',
-                name: 'teamManagerName',
-                message: "What is the team manager's name?"
+                name: 'internName',
+                message: "What is the team intern's name?"
             },
             {
                 type: 'input',
-                name: 'managerID',
-                message: "What is the team manager's employee ID?"
+                name: 'internID',
+                message: "What is the team intern's employee ID?"
             },
             {
                 type: 'input',
-                name: 'managerEmail',
-                message: "What is the team manager's email address?"
+                name: 'internEmail',
+                message: "What is the team intern's email address?"
             }, 
             {
                 type: 'input',
-                name: 'managerOfficeNumber',
-                message: "What is the team manager's office number?"
+                name: 'internSchool',
+                message: "What school did the intern go to?"
             }
             
             ];
@@ -130,32 +135,15 @@ const IDArray = []
         inquirer.prompt(questions)
         
         .then(answers => {
-            const manager = new Manager(answers.teamManagerName, answers.managerID, answers.managerEmail, answers.managerOfficeNumber)
-            teamMembers.push(manager)
-            IDArray.push(answers.managerID)
+            const intern = new Intern(answers.internName, answers.internID, answers.internEmail, answers.internSchool)
+            teamMembers.push(intern)
+            // IDArray.push(answers.internID)
 
         createTeam()
         })
     }
 
-    //maybe can just use bootstrap
-    function generateProfiles(data) {
-        return 
-        `
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Document</title>
-        </head>
-        <body>
-        
-        </body>
-        </html>
-        `
-    }
+    
 
     buildTeam();
 
