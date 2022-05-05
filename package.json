@@ -4,5 +4,9 @@
   },
   "devDependencies": {
     "jest": "^28.0.3"
+  },
+  "scripts": {
+    "test": "jest --verbose", 
+    "start": "node index.js"
   }
 }
