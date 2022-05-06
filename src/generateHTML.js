@@ -3,10 +3,10 @@
 function generateHTML(data) {
     const generateManager = manager => {
         return `
-        <div class="card employee-card">
+        <div class="card employee-card bg-info">
             <div class="card-header">
-                <h2 class="card-title">${manager.getName()}</h2>
-                <h3 class="card-title"><i class="fas fa-mug-hot mr-2"></i>${manager.getRole()}</h3>
+                <h2 class="card-title text-light">${manager.getName()}</h2>
+                <h3 class="card-title text-light font-weight-light"><i class="fas fa-mug-hot mr-2"></i>${manager.getRole()}</h3>
             </div>
             <div class="card-body">
                 <ul class="list-group">
@@ -19,18 +19,19 @@ function generateHTML(data) {
         `;
     };
 
-    const generateEngineer = engnieer => {
+   
+    const generateEngineer = engineer => {
         return `
-        <div class="card employee-card">
+        <div class="card employee-card bg-info">
             <div class="card-header">
-                <h2 class="card-title">${engineer.getName()}</h2>
-                <h3 class="card-title"><i class="fas fa-mug-hot mr-2"></i>${engineer.getRole()}</h3>
+                <h2 class="card-title text-light">${engineer.getName()}</h2>
+                <h3 class="card-title text-light font-weight-light"><i class="fas fa-glasses mr-2"></i>${engineer.getRole()}</h3>
             </div>
             <div class="card-body">
                 <ul class="list-group">
                     <li class="list-group-item">ID: ${engineer.getID()}</li>
                     <li class="list-group-item">Email: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></li>
-                    <li class="list-group-item">Office number: ${engineer.getGitHub()}</li>
+                    <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.getGitHub()}" target="_blank">${engineer.getGitHub()}</a></li>
                 </ul>
             </div>
         </div>
@@ -39,10 +40,10 @@ function generateHTML(data) {
 
     const generateIntern = intern => {
         return `
-        <div class="card employee-card">
+        <div class="card employee-card bg-info">
             <div class="card-header">
-                <h2 class="card-title">${intern.getName()}</h2>
-                <h3 class="card-title"><i class="fas fa-mug-hot mr-2"></i>${intern.getRole()}</h3>
+                <h2 class="card-title text-light">${intern.getName()}</h2>
+                <h3 class="card-title text-light font-weight-light"><i class="fa-solid fa-user-graduate mr-2"></i>${intern.getRole()}</h3>
             </div>
             <div class="card-body">
                 <ul class="list-group">
@@ -89,9 +90,22 @@ module.exports = data => {
         <title>Document</title>
     </head>
     <body>
-        ${generateHTML(data)}
+        <div class="container">
+            <div class="row">
+                <div class="col-12 mb-3 d-flex justify-content-center bg-info text-light">
+                    <h1>My Team</h1>
+                </div>
+            </div>
+        
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center">
+                    ${generateHTML(data)}
+                </div>
+            </div>
+        </div>
     </body>
     </html>
     `
 }
-

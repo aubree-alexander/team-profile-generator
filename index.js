@@ -67,7 +67,6 @@ const insertHTML = path.join(pathToDistFolder, 'index.HTML')
                 default: generatehtml()
             }
         })
-
     }
 
 
@@ -140,7 +139,6 @@ const insertHTML = path.join(pathToDistFolder, 'index.HTML')
         .then(answers => {
             const intern = new Intern(answers.internName, answers.internID, answers.internEmail, answers.internSchool)
             teamMembers.push(intern)
-            // IDArray.push(answers.internID)
 
         createTeam()
         })
