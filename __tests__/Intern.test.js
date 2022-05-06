@@ -1,5 +1,3 @@
-//test for school, getschool() method, and that getrole() returns intern
-//aa - come back here
 
 const Intern = require('../lib/Intern.js')
 
@@ -8,8 +6,23 @@ test ('Creates new Intern object', () => {
     expect (typeof(intern)).toBe('object')
 }) 
 
-test ('Populates intern school', () => {
-    const School = 'UW Madison'
-    const Intern = new Intern('Bill', 1, 'Bill@gmail.com', School)
-    expect (Intern.School).toBe(School)
+
+test ("Can set up school via constructor", () => {
+    const testSchool = "UW Madison";
+    const intern = new Intern("John", 1, "test@test.com", testSchool);
+    expect(intern.school).toBe(testSchool);
+  });
+
+
+test ('creates school', () => {
+    const testSchool = 'UW Madison'
+    const intern = new Intern('Bob', 1, 'Bob@gmail.com', testSchool)
+    expect (intern.getSchool()).toBe(testSchool)
+})
+
+
+test ("getRole() should return \"Intern\"", () => {
+    const testRole = 'Intern'
+    const intern = new Intern('Paul', 1, 'Paul@gmail.com', testRole)
+    expect (intern.getRole()).toBe(testRole)
 })

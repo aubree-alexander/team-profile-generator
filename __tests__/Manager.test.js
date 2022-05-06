@@ -1,5 +1,3 @@
-//test for office number, and getrole() method
-
 
 const Manager = require('../lib/Manager.js')
 
@@ -9,7 +7,19 @@ test ('Creates new Manager object', () => {
 }) 
 
 test ('Generates office number', () => {
-    const OfficeNumber = 3
-    const Manager = new Manager('Paul', 1, 'Paul@gmail.com', OfficeNumber)
-    expect (Manager.OfficeNumber).toBe(OfficeNumber)
+    const testOfficeNumber = 'officeNumber'
+    const manager = new Manager('Paul', 1, 'Paul@gmail.com', testOfficeNumber)
+    expect (manager.officeNumber).toBe(testOfficeNumber)
 })
+
+test ("getRole() should return \"Manager\"", () => {
+    const testRole = 'Manager'
+    const manager = new Manager('Paul', 1, 'Paul@gmail.com', testRole)
+    expect (manager.getRole()).toBe(testRole)
+})
+
+test("Can get email via getEmail()", () => {
+    const testEmail = "test@test.com";
+    const manager = new Manager("Paul", 1, testEmail);
+    expect(manager.getEmail()).toBe(testEmail);
+  });

@@ -1,5 +1,5 @@
 
-//does this constructor work
+
 //AA - CHANGE names of tests
 const Employee = require("../lib/Employee");
 test("Can instantiate Employee instance", () => {
