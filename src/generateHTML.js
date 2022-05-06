@@ -3,7 +3,7 @@
 function generateHTML(data) {
     const generateManager = manager => {
         return `
-        <div class="card employee-card bg-info">
+        <div class="card employee-card bg-info m-3">
             <div class="card-header">
                 <h2 class="card-title text-light">${manager.getName()}</h2>
                 <h3 class="card-title text-light font-weight-light"><i class="fas fa-mug-hot mr-2"></i>${manager.getRole()}</h3>
@@ -22,7 +22,7 @@ function generateHTML(data) {
    
     const generateEngineer = engineer => {
         return `
-        <div class="card employee-card bg-info">
+        <div class="card employee-card bg-info m-3">
             <div class="card-header">
                 <h2 class="card-title text-light">${engineer.getName()}</h2>
                 <h3 class="card-title text-light font-weight-light"><i class="fas fa-glasses mr-2"></i>${engineer.getRole()}</h3>
@@ -40,10 +40,10 @@ function generateHTML(data) {
 
     const generateIntern = intern => {
         return `
-        <div class="card employee-card bg-info">
+        <div class="card employee-card bg-info m-3">
             <div class="card-header">
                 <h2 class="card-title text-light">${intern.getName()}</h2>
-                <h3 class="card-title text-light font-weight-light"><i class="fa-solid fa-user-graduate mr-2"></i>${intern.getRole()}</h3>
+                <h3 class="card-title text-light font-weight-light"><i class="fas fa-user-graduate mr-2"></i>${intern.getRole()}</h3>
             </div>
             <div class="card-body">
                 <ul class="list-group">
