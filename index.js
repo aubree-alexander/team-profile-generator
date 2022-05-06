@@ -4,8 +4,11 @@ const teamMembers = []
 const Employee = require('./lib/Employee.js')
 const Engineer = require('./lib/Engineer.js')
 const Manager = require('./lib/Manager.js')
-
-// const IDArray = []
+const generateHTML = require('./src/generateHTML.js')
+const path = require('path')
+//resolve is like cutting path in jungle to specific spot
+const pathToDistFolder = path.resolve(__dirname, 'dist')
+const insertHTML = path.join(pathToDistFolder, 'index.HTML')
 
 
 
@@ -40,7 +43,7 @@ const Manager = require('./lib/Manager.js')
         .then(answers => {
             const manager = new Manager(answers.teamManagerName, answers.managerID, answers.managerEmail, answers.managerOfficeNumber)
             teamMembers.push(manager)
-            // IDArray.push(answers.managerID)
+      
 
         createTeam()
         })
@@ -61,7 +64,7 @@ const Manager = require('./lib/Manager.js')
                 case "Add an intern":
                     addIntern()
                     break
-                default: generateHTML()
+                default: generatehtml()
             }
         })
 
@@ -100,7 +103,7 @@ const Manager = require('./lib/Manager.js')
             const engineer = new Engineer(answers.engineerName, answers.engineerID, answers.engineerEmail, answers.engineerGitHub)
             
             teamMembers.push(engineer)
-            // IDArray.push(answers.engineerID)
+            
 
         createTeam()
         })
@@ -143,19 +146,20 @@ const Manager = require('./lib/Manager.js')
         })
     }
 
-    
 
     buildTeam();
 
 
-    // .then(function(response) {
-            
-    //     return fs.writeFileSync('index.html', generateProfiles(response), function(err) {
-    //         if (err) {
-    //             throw err;
-    //         };
-    //     });
-    // })
+
+const generatehtml = () => {
+    fs.writeFileSync(insertHTML, generateHTML(teamMembers), function(err) {
+        if (err) {
+            throw err;
+        };
+    });
+}
+        
+    
 
 
 
