@@ -7,7 +7,6 @@ const Manager = require('./lib/Manager.js')
 const Intern = require('./lib/Intern.js')
 const generateHTML = require('./src/generateHTML.js')
 const path = require('path')
-//resolve is like cutting path in jungle to specific spot
 const pathToDistFolder = path.resolve(__dirname, 'dist')
 const insertHTML = path.join(pathToDistFolder, 'index.HTML')
 
